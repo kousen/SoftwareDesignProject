@@ -10,5 +10,5 @@ class Hourly (
     override fun pay() = rate * hours
 
     override fun toString() =
-        "HourlyEmployee(name=$name, id=$id, rate=$rate, hours=$hours)"
+        "Hourly(name=$name, id=$id, rate=$rate, hours=$hours)"
 }

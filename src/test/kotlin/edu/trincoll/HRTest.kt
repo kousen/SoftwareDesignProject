@@ -30,7 +30,9 @@ class HRTest {
 
     @Test
     fun `test finding an employee`() {
-        val hr = HR().hire(salariedEmployee1).hire(hourlyEmployee1)
+        val hr = HR()
+            .hire(salariedEmployee1)
+            .hire(hourlyEmployee1)
 
         assertEquals(salariedEmployee1, hr.findEmployee(1))
         assertNull(hr.findEmployee(5))
@@ -38,14 +40,18 @@ class HRTest {
 
     @Test
     fun `test listing employees`() {
-        val hr = HR().hire(salariedEmployee1).hire(hourlyEmployee1)
+        val hr = HR()
+            .hire(salariedEmployee1)
+            .hire(hourlyEmployee1)
 
         assertEquals(listOf(salariedEmployee1, hourlyEmployee1), hr.listEmployees())
     }
 
     @Test
     fun `test counting employees`() {
-        val hr = HR().hire(salariedEmployee1).hire(hourlyEmployee1)
+        val hr = HR()
+            .hire(salariedEmployee1)
+            .hire(hourlyEmployee1)
 
         assertEquals(2, hr.countEmployees())
     }
@@ -58,8 +64,9 @@ class HRTest {
             .hire(hourlyEmployee1)
             .hire(hourlyEmployee2)
 
-        val expectedExpense = 52000.0 + 65000.0 + (25.0 * 80.0 * 26) + (30.0 * 75.0 * 26)
-        assertCloseTo(expectedExpense, hr.totalSalaryExpense())
+        val expectedExpense =
+            52000.0 + 65000.0 + (25.0 * 80.0 * 26) + (30.0 * 75.0 * 26)
+        assertCloseTo(expectedExpense / 26.0, hr.totalSalaryExpense())
     }
 
     @Test
@@ -70,7 +77,7 @@ class HRTest {
             .hire(hourlyEmployee1)
             .hire(hourlyEmployee2)
 
-        val expectedAverage = (52000.0 + 65000.0 + (25.0 * 80.0 * 26) + (30.0 * 75.0 * 26)) / 4
+        val expectedAverage = (52000.0/26 + 65000.0/26 + (25.0 * 80.0) + (30.0 * 75.0)) / 4
         assertCloseTo(expectedAverage, hr.averageSalary())
     }
 

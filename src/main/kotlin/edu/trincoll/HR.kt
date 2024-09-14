@@ -20,13 +20,7 @@ class HR(private val employees: List<Employee> = emptyList()) {
         employees.size
 
     fun totalSalaryExpense(): Double =
-        employees.sumOf {
-            when (it) {
-                is Salaried -> it.salary
-                is Hourly -> it.rate * it.hours * 26 // Assuming 26 pay periods per year
-                else -> 0.0
-            }
-        }
+        employees.sumOf { it.pay() }
 
     fun averageSalary(): Double =
         if (employees.isNotEmpty()) totalSalaryExpense() / employees.size else 0.0
