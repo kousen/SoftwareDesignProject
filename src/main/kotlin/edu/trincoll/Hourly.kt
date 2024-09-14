@@ -1,6 +1,6 @@
 package edu.trincoll
 
-class HourlyEmployee(
+class Hourly (
     name: String,
     id: Int,
     val rate: Double,

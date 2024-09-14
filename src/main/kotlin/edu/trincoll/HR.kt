@@ -23,7 +23,7 @@ class HR(private val employees: List<Employee> = emptyList()) {
         employees.sumOf {
             when (it) {
                 is Salaried -> it.salary
-                is HourlyEmployee -> it.rate * it.hours * 26 // Assuming 26 pay periods per year
+                is Hourly -> it.rate * it.hours * 26 // Assuming 26 pay periods per year
                 else -> 0.0
             }
         }

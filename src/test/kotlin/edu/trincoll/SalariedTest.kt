@@ -1,13 +1,12 @@
 package edu.trincoll
 
 import kotlin.test.*
-import kotlin.math.roundToInt
 
 class SalariedTest {
     @Test
     fun `test salaried employee pay calculation`() {
         val employee = Salaried("Alice", 1, 52000.0)
-        assertEquals(2000.0, employee.pay().roundToTwoDecimals())
+        assertCloseTo(2000.0, employee.pay())
     }
 
     @Test
@@ -19,17 +18,12 @@ class SalariedTest {
     @Test
     fun `test salaried employee with very high salary`() {
         val employee = Salaried("Charlie", 3, 1000000.0)
-        assertEquals(38461.54, employee.pay().roundToTwoDecimals())
+        assertCloseTo(38461.54, employee.pay())
     }
 
     @Test
     fun `test salaried employee with very low salary`() {
         val employee = Salaried("David", 4, 20800.0)  // Minimum wage equivalent
-        assertEquals(800.0, employee.pay().roundToTwoDecimals())
+        assertCloseTo(800.0, employee.pay())
     }
-}
-
-// Helper function to round to two decimal places
-private fun Double.roundToTwoDecimals(): Double {
-    return (this * 100).roundToInt() / 100.0
 }

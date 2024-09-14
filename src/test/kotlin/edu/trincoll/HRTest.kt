@@ -1,14 +1,13 @@
 package edu.trincoll
 
 import kotlin.test.*
-import kotlin.math.roundToInt
 
 class HRTest {
 
     private val salariedEmployee1 = Salaried("Alice", 1, 52000.0)
     private val salariedEmployee2 = Salaried("Bob", 2, 65000.0)
-    private val hourlyEmployee1 = HourlyEmployee("Charlie", 3, 25.0, 80.0)
-    private val hourlyEmployee2 = HourlyEmployee("David", 4, 30.0, 75.0)
+    private val hourlyEmployee1 = Hourly("Charlie", 3, 25.0, 80.0)
+    private val hourlyEmployee2 = Hourly("David", 4, 30.0, 75.0)
 
     @Test
     fun `test hiring and paying employees`() {
@@ -16,7 +15,7 @@ class HRTest {
             .hire(salariedEmployee1)
             .hire(hourlyEmployee1)
 
-        assertEquals(4000.0, hr.payEmployees().roundToTwoDecimals())
+        assertCloseTo(4000.0, hr.payEmployees())
     }
 
     @Test
@@ -26,7 +25,7 @@ class HRTest {
             .hire(hourlyEmployee1)
             .fire(1)
 
-        assertEquals(2000.0, hr.payEmployees().roundToTwoDecimals())
+        assertCloseTo(2000.0, hr.payEmployees())
     }
 
     @Test
@@ -60,7 +59,7 @@ class HRTest {
             .hire(hourlyEmployee2)
 
         val expectedExpense = 52000.0 + 65000.0 + (25.0 * 80.0 * 26) + (30.0 * 75.0 * 26)
-        assertEquals(expectedExpense.roundToTwoDecimals(), hr.totalSalaryExpense().roundToTwoDecimals())
+        assertCloseTo(expectedExpense, hr.totalSalaryExpense())
     }
 
     @Test
@@ -72,7 +71,7 @@ class HRTest {
             .hire(hourlyEmployee2)
 
         val expectedAverage = (52000.0 + 65000.0 + (25.0 * 80.0 * 26) + (30.0 * 75.0 * 26)) / 4
-        assertEquals(expectedAverage.roundToTwoDecimals(), hr.averageSalary().roundToTwoDecimals())
+        assertCloseTo(expectedAverage, hr.averageSalary())
     }
 
     @Test
@@ -85,7 +84,7 @@ class HRTest {
 
         val employeesByType = hr.employeesByType()
         assertEquals(2, employeesByType["Salaried"]?.size)
-        assertEquals(2, employeesByType["HourlyEmployee"]?.size)
+        assertEquals(2, employeesByType["Hourly"]?.size)
     }
 
     @Test
@@ -108,10 +107,5 @@ class HRTest {
         assertNull(hr.highestPaidEmployee())
         assertEquals(0.0, hr.averageSalary())
         assertTrue(hr.listEmployees().isEmpty())
-    }
-
-    // Helper function to round to two decimal places
-    private fun Double.roundToTwoDecimals(): Double {
-        return (this * 100).roundToInt() / 100.0
     }
 }
