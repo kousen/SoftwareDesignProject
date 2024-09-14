@@ -13,7 +13,7 @@ class HourlyTest {
     @Test
     fun `test hourly employee toString`() {
         val employee = Hourly("Frank", 6, 25.0, 75.0)
-        assertEquals("HourlyEmployee(name=Frank, id=6, rate=25.0, hours=75.0)", employee.toString())
+        assertEquals("Hourly(name=Frank, id=6, rate=25.0, hours=75.0)", employee.toString())
     }
 
     @Test

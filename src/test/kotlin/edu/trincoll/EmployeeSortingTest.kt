@@ -15,9 +15,8 @@ class EmployeeSortingTest {
 
         val sortedEmployees = employees.sorted()
 
-        // Salaried pay is annual salary / 26, HourlyEmployee pay is rate * hours
-        // Charlie: 52000 / 26 ≈ 2000, Bob: 25 * 80 = 2000, Alice: 60000 / 26 ≈ 2308
-        assertEquals(listOf("Bob", "Charlie", "Alice"), sortedEmployees.map { it.name })
+        assertEquals(listOf("Bob", "Charlie", "Alice"),
+            sortedEmployees.map { it.name })
     }
 
     @Test
@@ -30,7 +29,8 @@ class EmployeeSortingTest {
 
         val sortedEmployees = employees.sorted()
 
-        assertEquals(listOf("Alice", "Bob", "Charlie"), sortedEmployees.map { it.name })
+        assertEquals(listOf("Alice", "Bob", "Charlie"),
+            sortedEmployees.map { it.name })
     }
 
     @Test
@@ -57,6 +57,7 @@ class EmployeeSortingTest {
 
         val sortedEmployees = employees.sorted()
 
-        assertEquals(listOf("Alice", "Bob", "David", "Charlie"), sortedEmployees.map { it.name })
+        assertEquals(listOf("Alice", "Bob", "David", "Charlie"),
+            sortedEmployees.map { it.name })
     }
 }
