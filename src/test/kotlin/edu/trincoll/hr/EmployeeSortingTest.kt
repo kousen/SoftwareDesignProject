@@ -1,4 +1,4 @@
-package edu.trincoll
+package edu.trincoll.hr
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -1,4 +1,4 @@
-package edu.trincoll
+package edu.trincoll.hr
 
 // Salaried class should extend the Employee class. That means
 // its constructor should take a name of type String and an id of type Int,

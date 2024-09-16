@@ -1,4 +1,4 @@
-package edu.trincoll
+package edu.trincoll.hr
 
 // Abstract class Employee should have:
 //   - a name of type String

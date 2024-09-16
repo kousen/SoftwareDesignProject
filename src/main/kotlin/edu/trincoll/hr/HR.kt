@@ -1,4 +1,4 @@
-package edu.trincoll
+package edu.trincoll.hr
 
 // The HR class should have:
 //   - a list of employees
