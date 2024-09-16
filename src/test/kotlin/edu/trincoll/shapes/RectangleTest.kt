@@ -8,6 +8,15 @@ import org.junit.jupiter.params.provider.CsvSource
 class RectangleTest {
 
     @Test
+    fun `test rectangle width and height`() {
+        val rectangle = Rectangle(4.0, 5.0)
+        assertAll(
+            { assertEquals(4.0, rectangle.width, 0.001, "Rectangle width is incorrect") },
+            { assertEquals(5.0, rectangle.height, 0.001, "Rectangle height is incorrect") }
+        )
+    }
+
+    @Test
     fun `test rectangle area calculation`() {
         val rectangle = Rectangle(4.0, 5.0)
         assertEquals(20.0, rectangle.area(), 0.001, "Rectangle area calculation is incorrect")

@@ -7,6 +7,16 @@ import kotlin.math.sqrt
 class TriangleTest {
 
     @Test
+    fun `test triangle sides`() {
+        val triangle = Triangle(3.0, 4.0, 5.0)
+        assertAll(
+            { assertEquals(3.0, triangle.a, 0.001, "Triangle side a is incorrect") },
+            { assertEquals(4.0, triangle.b, 0.001, "Triangle side b is incorrect") },
+            { assertEquals(5.0, triangle.c, 0.001, "Triangle side c is incorrect") }
+        )
+    }
+
+    @Test
     fun `test right triangle area calculation`() {
         val triangle = Triangle(3.0, 4.0, 5.0)
         assertEquals(6.0, triangle.area(), 0.001, "Right triangle area calculation is incorrect")

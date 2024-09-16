@@ -7,6 +7,11 @@ import org.junit.jupiter.params.provider.ValueSource
 import kotlin.math.PI
 
 class CircleTest {
+    @Test
+    fun `test circle radius`() {
+        val circle = Circle(5.0)
+        assertEquals(5.0, circle.radius, 0.001, "Circle radius is incorrect")
+    }
 
     @Test
     fun `test circle area calculation`() {

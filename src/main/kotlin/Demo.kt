@@ -1,7 +1,7 @@
 class Demo {
     fun whenDemo() {
         for (i in 1..10) {
-            var answer =
+            val answer =
                 when (i % 3) {
                     0 -> "$i is divisible by 3"
                     1 -> "$i % 3 = 1"
