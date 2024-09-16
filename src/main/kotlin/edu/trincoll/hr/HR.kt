@@ -1,4 +1,4 @@
-package edu.trincoll
+package edu.trincoll.hr
 
 class HR(private val employees: List<Employee> = emptyList()) {
     fun hire(employee: Employee): HR =

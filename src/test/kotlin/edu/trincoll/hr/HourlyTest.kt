@@ -1,4 +1,4 @@
-package edu.trincoll
+package edu.trincoll.hr
 
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals

@@ -1,4 +1,4 @@
-package edu.trincoll
+package edu.trincoll.hr
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 class EmployeeSortingTest {
 
     @Test
-    fun `test sorting employees with different pay`() {
+    fun `sorting employees with different pay`() {
         val employees = listOf(
             Salaried("Alice", 1, 60000.0),
             Hourly("Bob", 2, 25.0, 80.0),
@@ -17,11 +17,13 @@ class EmployeeSortingTest {
 
         // Salaried pay is annual salary / 26, HourlyEmployee pay is rate * hours
         // Charlie: 52000 / 26 ≈ 2000, Bob: 25 * 80 = 2000, Alice: 60000 / 26 ≈ 2308
-        assertEquals(listOf("Bob", "Charlie", "Alice"), sortedEmployees.map { it.name })
+        assertEquals(listOf("Bob", "Charlie", "Alice"),
+            sortedEmployees.map(Employee::name)
+        )
     }
 
     @Test
-    fun `test sorting employees with same pay but different names`() {
+    fun `sorting employees with same pay but different names`() {
         val employees = listOf(
             Salaried("Charlie", 1, 52000.0),
             Salaried("Alice", 2, 52000.0),
@@ -30,11 +32,12 @@ class EmployeeSortingTest {
 
         val sortedEmployees = employees.sorted()
 
-        assertEquals(listOf("Alice", "Bob", "Charlie"), sortedEmployees.map { it.name })
+        assertEquals(listOf("Alice", "Bob", "Charlie"),
+            sortedEmployees.map(Employee::name))
     }
 
     @Test
-    fun `test sorting employees with same pay and name but different IDs`() {
+    fun `sorting employees with same pay and name but different IDs`() {
         val employees = listOf(
             Salaried("Alice", 3, 52000.0),
             Salaried("Alice", 1, 52000.0),
@@ -43,11 +46,11 @@ class EmployeeSortingTest {
 
         val sortedEmployees = employees.sorted()
 
-        assertEquals(listOf(1, 2, 3), sortedEmployees.map { it.id })
+        assertEquals(listOf(1, 2, 3), sortedEmployees.map(Employee::id))
     }
 
     @Test
-    fun `test sorting mixed employee types`() {
+    fun `sorting mixed employee types`() {
         val employees = listOf(
             Salaried("Alice", 1, 52000.0),    // 2000 per pay period
             Hourly("Bob", 2, 25.0, 80.0),  // 2000 per pay period
@@ -57,6 +60,7 @@ class EmployeeSortingTest {
 
         val sortedEmployees = employees.sorted()
 
-        assertEquals(listOf("Alice", "Bob", "David", "Charlie"), sortedEmployees.map { it.name })
+        assertEquals(listOf("Alice", "Bob", "David", "Charlie"),
+            sortedEmployees.map(Employee::name))
     }
 }

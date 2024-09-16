@@ -1,4 +1,4 @@
-package edu.trincoll
+package edu.trincoll.hr
 
 class Salaried(
     name: String,
