@@ -16,8 +16,10 @@ class SketchPadTest {
     fun `test paper size calculation`() {
         val (width, height) = sketchPad.calculateRequiredPaperSize()
         assertAll(
-            { assertEquals(10.0, width, 0.001, "Width calculation is incorrect") },
-            { assertEquals(10.0, height, 0.001, "Height calculation is incorrect") }
+            { assertEquals(10.0, width, 0.001,
+                "Width calculation is incorrect") },
+            { assertEquals(10.0, height, 0.001,
+                "Height calculation is incorrect") }
         )
     }
 
@@ -27,7 +29,8 @@ class SketchPadTest {
         val rectanglePerimeter = 2 * (4 + 6)
         val trianglePerimeter = 3 + 4 + 5
         val expectedTotalInkUsage = circlePerimeter + rectanglePerimeter + trianglePerimeter
-        assertEquals(expectedTotalInkUsage, sketchPad.getTotalInkUsed(), 0.001, "Ink usage calculation is incorrect")
+        assertEquals(expectedTotalInkUsage, sketchPad.getTotalInkUsed(),
+            0.001, "Ink usage calculation is incorrect")
     }
 
     @Test
@@ -51,6 +54,7 @@ class SketchPadTest {
         val rectangleArea = 4 * 6
         val triangleArea = 6.0  // Area of a 3-4-5 right triangle
         val expectedTotalArea = circleArea + rectangleArea + triangleArea
-        assertEquals(expectedTotalArea, sketchPad.totalArea(), 0.001, "Total area calculation is incorrect")
+        assertEquals(expectedTotalArea, sketchPad.totalArea(), 0.001,
+            "Total area calculation is incorrect")
     }
 }
