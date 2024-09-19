@@ -3,6 +3,7 @@ package edu.trincoll.koans
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.assertThrows
 
 class IntroductionTest {
 
@@ -35,7 +36,8 @@ answer = 42""", tripleQuotedString
 
     // String templates
     private fun testMatch(date: String) =
-        assertTrue(date.matches(getPattern().toRegex()), "The pattern should match $date")
+        assertTrue(date.matches(getPattern().toRegex()),
+            "The pattern should match $date")
 
     @Suppress("SameParameterValue")
     private fun testMismatch(date: String) =
@@ -106,13 +108,11 @@ answer = 42""", tripleQuotedString
 
     // Nothing type
     private fun testAge(age: Int) {
-        val e: IllegalArgumentException? = try {
+        val ex = assertThrows<IllegalArgumentException> {
             checkAge(age)
-            null
-        } catch (e: IllegalArgumentException) {
-            e
         }
-        assertNotNull(e,
+
+        assertNotNull(ex,
             "Expected IllegalArgumentException for 'checkAge($age)'")
     }
 

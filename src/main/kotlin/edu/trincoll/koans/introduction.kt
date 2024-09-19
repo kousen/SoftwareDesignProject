@@ -1,5 +1,7 @@
 package edu.trincoll.koans
 
+import java.util.*
+
 // Hello, World!
 fun start(): String = "OK"
 
@@ -9,7 +11,7 @@ fun joinOptions(options: Collection<String>) =
 
 // Default arguments
 fun foo(name: String, number: Int = 42, toUpperCase: Boolean = false) =
-    (if (toUpperCase) name.toUpperCase() else name) + number
+    (if (toUpperCase) name.uppercase(Locale.getDefault()) else name) + number
 
 fun useFoo() = listOf(
     foo("a"),
@@ -27,7 +29,7 @@ val tripleQuotedString = """
     #answer = $answer""".trimMargin("#")
 
 // String templates
-val month = "(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)"
+const val month = "(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)"
 
 fun getPattern(): String = """\d{2} $month \d{4}"""
 
