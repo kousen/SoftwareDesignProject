@@ -12,9 +12,7 @@ class Circle(val radius: Double) : Shape(), Drawable {
     override fun area() = PI * radius * radius
     override fun perimeter() = 2 * PI * radius
 
-    override fun draw() {
-        println("Drawing a circle with radius $radius")
-    }
+    override fun draw() = println("Drawing a circle with radius $radius")
 
     override fun getBoundingBox() = Pair(2 * radius, 2 * radius)
 
