@@ -6,7 +6,7 @@ import kotlin.math.PI
 
 class SketchPadTest {
 
-    private val sketchPad = SketchPad().apply {
+    private val sketchPad = SketchPad().apply {  // apply is a scope function
         addShape(Circle(5.0))
         addShape(Rectangle(4.0, 6.0))
         addShape(Triangle(3.0, 4.0, 5.0))

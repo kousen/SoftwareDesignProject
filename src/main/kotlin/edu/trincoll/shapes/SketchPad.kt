@@ -9,7 +9,7 @@ class SketchPad {
 
     fun draw() {
         println("Drawing all shapes on the SketchPad:")
-        shapes.forEach { (it as Drawable).draw() }
+        shapes.forEach { (it as Drawable).draw() }  // cast to Drawable
     }
 
     fun calculateRequiredPaperSize(): Pair<Double, Double> {
