@@ -1,7 +1,7 @@
 package edu.trincoll.hr
 
+import org.junit.jupiter.api.Assertions.assertTrue
 import kotlin.math.abs
-import kotlin.test.assertTrue
 
 fun assertCloseTo(expected: Double, actual: Double, precision: Double = 0.01) {
     assertTrue(

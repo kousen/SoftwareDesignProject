@@ -1,5 +1,15 @@
 package edu.trincoll.koans
 
+import edu.trincoll.koans.solutions.Client
+import edu.trincoll.koans.solutions.Mailer
+import edu.trincoll.koans.solutions.PersonalInfo
+import edu.trincoll.koans.solutions.checkAge
+import edu.trincoll.koans.solutions.containsEven
+import edu.trincoll.koans.solutions.getPattern
+import edu.trincoll.koans.solutions.sendMessageToClient
+import edu.trincoll.koans.solutions.start
+import edu.trincoll.koans.solutions.tripleQuotedString
+import edu.trincoll.koans.solutions.useFoo
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -16,7 +26,7 @@ class IntroductionTest {
     // Named arguments
     @Test
     fun joinOptions() {
-        assertEquals("[yes, no, may be]", joinOptions(listOf("yes", "no", "may be")))
+        assertEquals("[yes, no, may be]", edu.trincoll.koans.solutions.joinOptions(listOf("yes", "no", "may be")))
     }
 
     // Default arguments
@@ -80,7 +90,8 @@ answer = 42""", tripleQuotedString
 
     @Test
     fun everythingIsOk() {
-        testSendMessageToClient(Client(PersonalInfo("bob@gmail.com")),
+        testSendMessageToClient(
+            Client(PersonalInfo("bob@gmail.com")),
             "Hi Bob! We have an awesome proposition for you...",
             "bob@gmail.com",
             true)
@@ -125,13 +136,15 @@ answer = 42""", tripleQuotedString
     // Lambdas
     @Test
     fun contains() {
-        assertTrue(containsEven(listOf(1, 2, 3, 126, 555)),
+        assertTrue(
+            containsEven(listOf(1, 2, 3, 126, 555)),
             "The result should be true if the collection contains an even number")
     }
 
     @Test
     fun notContains() {
-        assertFalse(containsEven(listOf(43, 33)),
+        assertFalse(
+            containsEven(listOf(43, 33)),
             "The result should be false if the collection doesn't contain an even number")
     }
 }
