@@ -12,10 +12,24 @@ class Demo {
         }
     }
 
+    fun foldDemo() {
+        val numbers = listOf(1, 2, 3, 4, 5)
+        val sum = numbers.fold(0) { acc, i ->
+            println("acc: $acc, i: $i")
+            acc + i
+        }
+        println(sum)
 
+        "PWND".fold("") { acc, c ->
+            println("acc: $acc, c: $c")
+            "$acc$acc$c"
+        }
+    }
 }
+
+val isEvenLambda = { i: Int -> i % 2 == 0 }
 
 fun main() {
     val demo = Demo()
-    demo.whenDemo()
+    demo.foldDemo()
 }
