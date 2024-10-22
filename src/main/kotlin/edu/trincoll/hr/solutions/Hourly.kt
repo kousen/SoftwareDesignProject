@@ -1,4 +1,4 @@
-package edu.trincoll.hr
+package edu.trincoll.hr.solutions
 
 class Hourly (
     name: String,

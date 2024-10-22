@@ -1,4 +1,4 @@
-package edu.trincoll.hr
+package edu.trincoll.hr.solutions
 
 abstract class Employee(
     val name: String,
@@ -9,9 +9,9 @@ abstract class Employee(
     override fun compareTo(other: Employee): Int {
         return compareValuesBy(
             this, other,
-            Employee::pay,
-            Employee::name,
-            Employee::id
+            { it.pay() },
+            { it.name },
+            { it.id }
         )
     }
 

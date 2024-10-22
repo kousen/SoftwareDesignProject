@@ -1,4 +1,4 @@
-package edu.trincoll.hr
+package edu.trincoll.hr.solutions
 
 import kotlin.math.abs
 import kotlin.test.assertTrue
