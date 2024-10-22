@@ -1,4 +1,4 @@
-package edu.trincoll
+package edu.trincoll.patterns.factorymethod
 
 import kotlin.math.cos
 import kotlin.math.sin
