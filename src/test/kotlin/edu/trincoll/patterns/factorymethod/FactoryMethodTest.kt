@@ -7,7 +7,7 @@ import kotlin.test.assertEquals
 class FactoryMethodTest {
 
     @Test
-    fun rectangularPoint() {
+    fun `create rectangular point`() {
         val pointFromFM = rectangularPoint(3.0, 4.0)
         println(pointFromFM)
         assertAll(
@@ -17,7 +17,7 @@ class FactoryMethodTest {
     }
 
     @Test
-    fun polarPoint() {
+    fun `create polar point`() {
         val polarPoint = polarPoint(1.0, Math.PI / 2)
         println(polarPoint)
         assertAll(

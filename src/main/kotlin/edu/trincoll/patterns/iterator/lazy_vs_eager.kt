@@ -22,8 +22,8 @@ fun internalIterator() {
 
 fun eager() {
     val list = listOf(1, 2, 3, 4, 5)
-    list.map { it * 2 }
-        .filter { it > 5 }
+    list.map { it * 2 }       // 2, 4, 6, 8, 10
+        .filter { it > 5 }     // 6, 8, 10
         .forEach { println(it) }
 
     println("eager")
