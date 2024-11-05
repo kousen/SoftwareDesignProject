@@ -14,7 +14,7 @@ class JsonplaceholderServiceTest {
     @Test
     fun `all posts`() {
         runBlocking {
-            val posts = service.getBlogPosts()
+            val posts = service.getPosts()
             assertEquals(100, posts.size)
         }
     }
@@ -24,17 +24,27 @@ class JsonplaceholderServiceTest {
         fun blogPostIndices() = (1..100).toList()
     }
 
+    //@Execution(ExecutionMode.CONCURRENT)
     @ParameterizedTest(name = "post {0}")
     @MethodSource("blogPostIndices")
     fun `each blog post`(index: Int) {
         runBlocking {
-            val post = service.getBlogPost(index)
+            val post = service.getPost(index)
             assertAll(
                 { assertTrue(post.userId > 0) },
                 { assertEquals(index, post.id) },
                 { assertTrue(post.title.isNotBlank()) },
                 { assertTrue(post.body.isNotBlank()) },
             )
+        }
+    }
+
+    @Test
+    fun `insert blog post`() {
+        runBlocking {
+            val post = BlogPost(1, 101, "Test Post", "This is a test post.")
+            val response = service.insertPost(post)
+            assertEquals(post, response)
         }
     }
 }
