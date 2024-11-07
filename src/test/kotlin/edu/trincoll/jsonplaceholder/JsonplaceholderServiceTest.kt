@@ -34,7 +34,7 @@ class JsonplaceholderServiceTest {
             assertTrue(response.status.isSuccess())
             val post = response.body<BlogPost>()
             assertAll(
-                { assertTrue(post.userId > 0) },
+                // { assertTrue(post.userId > 0) },
                 { assertEquals(index, post.id) },
                 { assertTrue(post.title.isNotBlank()) },
                 { assertTrue(post.body.isNotBlank()) },
@@ -45,7 +45,7 @@ class JsonplaceholderServiceTest {
     @Test
     fun `insert blog post`() {
         runBlocking {
-            val post = BlogPost(1, 101, "Test Post", "This is a test post.")
+            val post = BlogPost( 101, "Test Post", "This is a test post.")
             val response = service.insertPost(post)
             assertEquals(201, response.status.value)
             assertEquals(post, response.body())
@@ -55,7 +55,7 @@ class JsonplaceholderServiceTest {
     @Test
     fun `update blog post`() {
         runBlocking {
-            val post = BlogPost(1, 1, "Test Post", "This is a test post.")
+            val post = BlogPost(1, "Test Post", "This is a test post.")
             val response = service.updatePost(post)
             assertEquals(post, response)
         }

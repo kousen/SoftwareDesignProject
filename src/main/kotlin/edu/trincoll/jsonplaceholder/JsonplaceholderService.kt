@@ -15,10 +15,11 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 
 @Serializable
 data class BlogPost(
-    val userId: Int,
+    //val userId: Int,
     val id: Int,
     val title: String,
     val body: String
@@ -29,7 +30,11 @@ class JsonplaceholderService {
 
     suspend fun getPosts(): List<BlogPost> =
         HttpClient(CIO) {
-            install(ContentNegotiation) { json() }
+            install(ContentNegotiation) {
+                json(Json {
+                    ignoreUnknownKeys = true
+                })
+            }
         }.use { client ->
             client.get("$baseUrl/posts") {
                 accept(ContentType.Application.Json)
@@ -38,7 +43,11 @@ class JsonplaceholderService {
 
     suspend fun getPost(index: Int): HttpResponse =
         HttpClient(CIO) {
-            install(ContentNegotiation) { json() }
+            install(ContentNegotiation) {
+                json(Json {
+                    ignoreUnknownKeys = true
+                })
+            }
         }.use { client ->
             client.get("$baseUrl/posts/$index") {
                 accept(ContentType.Application.Json)
