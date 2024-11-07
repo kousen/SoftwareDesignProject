@@ -1,7 +1,3 @@
-import org.gradle.kotlin.dsl.test
-import org.gradle.kotlin.dsl.testImplementation
-import org.gradle.kotlin.dsl.testRuntimeOnly
-
 plugins {
     kotlin("jvm") version "2.0.21"
     kotlin("plugin.serialization") version "2.0.21"
@@ -24,6 +20,8 @@ dependencies {
     // Ktor
     implementation("io.ktor:ktor-client-core:$ktor_version")
     implementation("io.ktor:ktor-client-cio:$ktor_version")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
 
     // Logging
     implementation("ch.qos.logback:logback-classic:$logback_version")
