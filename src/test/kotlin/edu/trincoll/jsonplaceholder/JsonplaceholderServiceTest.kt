@@ -1,5 +1,7 @@
 package edu.trincoll.jsonplaceholder
 
+import io.ktor.client.call.body
+import io.ktor.http.isSuccess
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
@@ -24,12 +26,13 @@ class JsonplaceholderServiceTest {
         fun blogPostIndices() = (1..100).toList()
     }
 
-    //@Execution(ExecutionMode.CONCURRENT)
     @ParameterizedTest(name = "post {0}")
     @MethodSource("blogPostIndices")
     fun `each blog post`(index: Int) {
         runBlocking {
-            val post = service.getPost(index)
+            val response = service.getPost(index)
+            assertTrue(response.status.isSuccess())
+            val post = response.body<BlogPost>()
             assertAll(
                 { assertTrue(post.userId > 0) },
                 { assertEquals(index, post.id) },
@@ -44,7 +47,26 @@ class JsonplaceholderServiceTest {
         runBlocking {
             val post = BlogPost(1, 101, "Test Post", "This is a test post.")
             val response = service.insertPost(post)
+            assertEquals(201, response.status.value)
+            assertEquals(post, response.body())
+        }
+    }
+
+    @Test
+    fun `update blog post`() {
+        runBlocking {
+            val post = BlogPost(1, 1, "Test Post", "This is a test post.")
+            val response = service.updatePost(post)
             assertEquals(post, response)
         }
     }
+
+    @Test
+    fun `delete blog post`() {
+        runBlocking {
+            val response = service.deletePost(1)
+            assertEquals(200, response.status.value)
+        }
+    }
+
 }
