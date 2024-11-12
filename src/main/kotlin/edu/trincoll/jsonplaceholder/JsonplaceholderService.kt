@@ -25,39 +25,35 @@ data class BlogPost(
     val body: String
 )
 
-class JsonplaceholderService {
+class JsonPlaceholderService {
     private val baseUrl = "https://jsonplaceholder.typicode.com"
 
-    suspend fun getPosts(): List<BlogPost> =
-        HttpClient(CIO) {
+    private fun createHttpClient(): HttpClient {
+        return HttpClient(CIO) {
             install(ContentNegotiation) {
                 json(Json {
                     ignoreUnknownKeys = true
                 })
             }
-        }.use { client ->
+        }
+    }
+
+    suspend fun getPosts(): List<BlogPost> =
+        createHttpClient().use { client ->
             client.get("$baseUrl/posts") {
                 accept(ContentType.Application.Json)
             }.body()
         }
 
     suspend fun getPost(index: Int): HttpResponse =
-        HttpClient(CIO) {
-            install(ContentNegotiation) {
-                json(Json {
-                    ignoreUnknownKeys = true
-                })
-            }
-        }.use { client ->
+        createHttpClient().use { client ->
             client.get("$baseUrl/posts/$index") {
                 accept(ContentType.Application.Json)
             }
         }
 
     suspend fun insertPost(post: BlogPost): HttpResponse =
-        HttpClient(CIO) {
-            install(ContentNegotiation) { json() }
-        }.use { client ->
+        createHttpClient().use { client ->
             client.post("$baseUrl/posts") {
                 contentType(ContentType.Application.Json)
                 accept(ContentType.Application.Json)
@@ -65,11 +61,8 @@ class JsonplaceholderService {
             }
         }
 
-    // Implement the updatePost method
     suspend fun updatePost(post: BlogPost): BlogPost =
-        HttpClient(CIO) {
-            install(ContentNegotiation) { json() }
-        }.use { client ->
+        createHttpClient().use { client ->
             client.put("$baseUrl/posts/${post.id}") {
                 contentType(ContentType.Application.Json)
                 accept(ContentType.Application.Json)
@@ -77,10 +70,8 @@ class JsonplaceholderService {
             }.body()
         }
 
-    // Implement the deletePost method
     suspend fun deletePost(index: Int): HttpResponse =
-        HttpClient(CIO).use { client ->
+        createHttpClient().use { client ->
             client.delete("$baseUrl/posts/$index")
         }
 }
-

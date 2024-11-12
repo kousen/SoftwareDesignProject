@@ -11,7 +11,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class JsonplaceholderServiceTest {
-    private val service = JsonplaceholderService()
+    private val service = JsonPlaceholderService()
 
     @Test
     fun `all posts`() {
